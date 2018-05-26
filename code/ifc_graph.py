@@ -27,11 +27,10 @@ with open(path + filename,'r') as f:
             prts = l.split(' ')
             objid = prts[0][:-1]
             objtype = prts[1].split('(')[0]
-            print objid,objtype
+            graphvizfile.write('"'+objid+'" [label="'+objtype[3:]+'"];\n')
             searchstring = prts[1]
             res = re.findall("#[0-9]+", searchstring)
             if res:
-                print res
                 for r in res:
                     graphvizfile.write('"'+r+'" -> "'+objid+'";\n')
 
